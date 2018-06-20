@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Suggestions{% endblock %}
+{% block content %}
+<div class="wrapper" style="display:flex; flex-flow:column; height:100%">
+   <!--Background-->
+   <div class="container-fluid bottom-of-page" style="background:linear-gradient(-400deg, rgba(23, 194, 237, 0.7), rgba(109, 43, 216, 0.7)); flex: 1 1 auto; padding:110px;">
+      <!--White container-->
+      <div class="container" align="center" style="background-color:white; padding:50px; width:80%; border-radius:10px; font-family:'Courier New'">
+         <!--Title & location bar-->
+         <h2><strong>Suggestions</strong></h2>
+         <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/suggestions">Suggestions</a></li>
+         </ul>
+
+         <!--Lists suggestions if a user has suggestions on gpodder.net-->
+         <div class="searchresults" style="text-align:left;">
+            <!--If no suggestions-->
+            {% if not suggestions %}
+               <h6 style="font-size:24px;">No suggestions, sorry!</h6>
+            {% endif %}
+            <!--If there are suggestions-->
+            {% for podcast in suggestions %}
+               <img src="{{ podcast.logo_url }}" alt="" class="pod_img" style="width:50px; height:50px; float:left;">
+               <a href="{{ podcast.website }}" style="color:black;"><h6>{{ podcast.title }}<small style="font-size:11px; opacity:0.7;"> - {{ podcast.subscribers }} subcribers</small></h6></a>
+               <p style="font-size:11px;">{{ podcast.description }}</p>
+               <hr>
+            {% endfor %}
+         </div>
+
+      </div>
+   </div>
+</div>
+{% endblock %}

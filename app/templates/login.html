@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Including Stylesheet--------------------------------------------->
+	<link rel="stylesheet" type="text/css" href="../static/LoginPageStylesheet.css">
+	<!--Including Bootstrap---------------------------------------------------------------------------->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<!--End of Bootstrap------------------------------------------------------------------------------->
+</head>
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<!--Logo-->
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="../static/cat.png" alt="IMG">
+				</div>
+
+				<!--Form for logging in-->
+				<form class="login100-form validate-form" action="/loginresult" method="post">
+					<span class="login100-form-title">
+						Welcome to Pod Cat!
+					</span>
+
+					<span class="login100-form-description">
+						Please login using your gPodder login
+					</span>
+
+					<!--Username Field-->
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
+					</div>
+
+					<!--Password Field-->
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+					</div>
+
+					<!--Login Button-->
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+				</form>
+				<!--End of Form for logging in-->
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+   <!--Background-->
+   <div class="col-sm-12" style="text-align:center; padding:50px; padding-top:20px; background:linear-gradient(-400deg, rgba(23, 194, 237, 0.7), rgba(109, 43, 216, 0.7)); margin-top:52px;">
+
+      <!--Page title & location bar-->
+      <h2 style="color:white; text-align:center">Categories</h2>
+      <ul class="breadcrumb">
+         <li class="breadcrumb-item"><a href="/categories">Categories</a></li>
+      </ul>
+
+      <!--Sorting option dropdown menu-->
+      <form action = "/categoryddform" method = "POST" style="float:right;">
+         <select name = "Sort">
+            <option value="Most Popular">Most Popular</option>
+            <option value="A->Z">A->Z</option>
+         </select>
+         <input type='submit' value='Sort'>
+      </form>
+      <br>
+
+      <!--Buttons for categories-->
+      <form class="login100-form validate-form" action="/tag" method="post">
+         <div class="row">
+            {% for name in category_names %}
+               <div class="col">
+                  <div class="container-login100-form-btn" style="width: 100%; display:flex; flex-wrap:wrap; justify-content:center; padding-top:20px;">
+                     <button class="login100-form-btn" name="category_tag" value="{{ name.tag }}" style="font-family: 'Courier New'; font-size:15px; line-height:1.5; color:white; text-transform:uppercase; width:80%; height:50px; border-radius:25px; background:#99a0af; display:flex; justify-content:center; align-items:center; padding: 0 25px; outline: none !important; border: none;">
+                        {{ name.tag }}
+                     </button>
+                  </div>
+               </div>
+               <!--Creates a new row for every 3 buttons-->
+               {% if loop.index%3 == 0 %}
+                  </div>
+                  <div class="row">
+               {% endif %}
+            {% endfor %}
+         </div>
+      </form>
+   </div>
+{% endblock %}

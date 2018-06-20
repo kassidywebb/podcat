@@ -1,0 +1,60 @@
+<!--Top portion of every page. Includes the title and the Nav Bar-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!---takes title from the specific page-->
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Stylesheets-------------------------------------------------------------------------------------->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <!--End of Stylesheets------------------------------------------------------------------------------->
+  <style>
+   html, body{
+     height:100%;
+     margin: 0;
+     font-family: 'Courier New'
+   }
+   .navbar {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+   }
+  </style>
+</head>
+<body>
+   <!--PODCAT Title-->
+   <div class="container-fluid">
+     <h1 class="display-2" style="text-align:center;">PODCAT</h1>
+   </div>
+
+   <!--Nav Bar-->
+   <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+         <ul class="nav navbar-nav" style="display:inline;">
+            <li action="/home" method="post"><a href="/home">Home</a></li>
+            <li action="/categories" method="post"><a href="/categories">Categories</a></li>
+            <li action="/toppodcasts" method="post"><a href="/toppodcasts">Top Podcasts</a></li>
+            <li action="/suggestions" method="post"><a href="/suggestions">Suggestions</a></li>
+            <li action="/subscriptions" method="post"><a href="/subscriptions">Subscriptions</a></li>
+            <li action="/listennext" method="post"><a href="/listennext">Listen to Next!</a></li>
+         </ul>
+         <!---Search function on nav bar--->
+         <form class="form-inline" action="/searchresult" method="post" style="margin:auto; width:280px;">
+            <input class="form-control mr-sm-2" type="text" name="Search" placeholder="Search">
+            <button class="btn search-button btn-success" type="submit" style="background-color:#575b63; border-color:#575b63;">
+               <i class="glyphicon glyphicon-search"></i>
+            </button>
+         </form>
+      </div>
+   </nav>
+
+   <!--Continued on each webpage-->
+   {% block content %}{% endblock %}
+</body>
+</html>

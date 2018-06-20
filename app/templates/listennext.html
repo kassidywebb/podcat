@@ -1,0 +1,32 @@
+<!--I wanted to get the number of episodes per week for the user's subscribed podcasts,
+but I couldn't find an api function for that; So, I assumed the user was subscribed
+to the top-25 podcasts, self-searched the frequency of episodes posted for those podcats,
+then sorted the top-25 podcasts by their frequency.-->
+{% extends "base.html" %}
+{% block title %}Subscriptions{% endblock %}
+{% block content %}
+<div class="wrapper" style="display:flex; flex-flow:column; height:100%">
+   <!--Background-->
+   <div class="container-fluid bottom-of-page" style="background:linear-gradient(-400deg, rgba(23, 194, 237, 0.7), rgba(109, 43, 216, 0.7)); flex: 1 1 auto; padding:110px;">
+      <!--White container-->
+      <div class="container" align="center" style="background-color:white; padding:50px; width:80%; border-radius:10px; font-family:'Courier New'">
+         <!--Title & location bar-->
+         <h2><strong>Listen to Next</strong></h2>
+         <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Listen to Next</a></li>
+         </ul>
+
+         <!--List of top-25 podcats sorted by their number of episodes (episodes per month)-->
+         <div class="listenlist" style="text-align:left;">
+            {% for podcast in podcast_list %}
+               <img src="{{ podcast.logo_url }}" alt="" class="pod_img" style="width:50px; height:50px; float:left;">
+               <a href="{{ podcast.website }}" style="color:black;"><h6>{{ podcast.title }}<small style="font-size:11px; opacity:0.7;"> - {{ podcast.num_episodes }} episodes</small></h6></a>
+               <p style="font-size:11px;">{{ podcast.description }}</p>
+               <hr>
+            {% endfor %}
+         </div>
+
+      </div>
+   </div>
+</div>
+{% endblock %}

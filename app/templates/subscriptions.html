@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Subscriptions{% endblock %}
+{% block content %}
+<div class="wrapper" style="display:flex; flex-flow:column; height:100%">
+   <!--Background-->
+   <div class="container-fluid bottom-of-page" style="background:linear-gradient(-400deg, rgba(23, 194, 237, 0.7), rgba(109, 43, 216, 0.7)); flex: 1 1 auto; padding:110px;">
+      <!--White container-->
+      <div class="container" align="center" style="background-color:white; padding:50px; width:80%; border-radius:10px; font-family:'Courier New'">
+         <!--Title & location bar-->
+         <h2><strong>Subscriptions</strong></h2>
+         <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/subscriptions">Subscriptions</a></li>
+         </ul>
+
+         <!--Sorting option dropdown menu-->
+         <form action = "/subscriptionddform" method = "POST" style="float:right;">
+            <select name = "Sort">
+               <option value="A->Z">A->Z</option>
+               <option value="Most Subscribers">Most Subscribers</option>
+            </select>
+            <input type='submit' value='Sort'>
+         </form>
+         <br>
+
+         <!--Lists subscriptions-->
+         <!--A podcast_list is created when a user chooses a sorting option-->
+         <div class="subscriptions" style="text-align:left;">
+            <!--If a user doesn't have any subscriptions-->
+            {% if not subscriptions %}
+               <h6 style="font-size:24px;">No subscriptions, sorry!</h6>
+            {% endif %}
+
+            <!--If not sorting option was chosen (usually first time loading page)-->
+            {% if not podcast_list %}
+               {% for podcast in subscriptions %}
+                  <img src="{{ podcast.logo_url }}" alt="" class="pod_img" style="width:50px; height:50px; float:left;">
+                  <a href="{{ podcast.website }}" style="color:black;"><h6>{{ podcast.title }}<small style="font-size:11px; opacity:0.7;"> - {{ podcast.subscribers }} subcribers</small></h6></a>
+                  <p style="font-size:11px;">{{ podcast.description }}</p>
+                  <hr>
+               {% endfor %}
+            <!--If a sorting option was chosen-->
+            {% else %}
+               {% for podcast in podcast_list %}
+                  <img src="{{ podcast.logo_url }}" alt="" class="pod_img" style="width:50px; height:50px; float:left;">
+                  <a href="{{ podcast.website }}" style="color:black;"><h6>{{ podcast.title }}<small style="font-size:11px; opacity:0.7;"> - {{ podcast.subscribers }} subcribers</small></h6></a>
+                  <p style="font-size:11px;">{{ podcast.description }}</p>
+                  <hr>
+               {% endfor %}
+            {% endif %}
+         </div>
+
+      </div>
+   </div>
+</div>
+{% endblock %}

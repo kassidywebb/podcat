@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+   <!--Welcome/Search-->
+   <div class="wrapper" style="display:flex; flex-flow:column; height:100%">
+      <div class="container-fluid bottom-of-page" style="background:linear-gradient(-400deg, rgba(23, 194, 237, 0.7), rgba(109, 43, 216, 0.7)); flex: 1 1 auto; padding:110px;">
+         <div class="container welcome-form" align="center" style="background-color:white; padding:50px; width:55%; border-radius:100px; font-family:'Courier New'">
+            <h3>Welcome to PodCat</h4>
+            <p>What would you like to listen to?</p>
+            <!--Search input box-->
+            <form class="form-inline" action="/searchresult" method="post" style="margin:auto; width:280px">
+               <input class="form-control mr-sm-2" type="text" name="Search" placeholder="Search">
+               <button class="btn search-button btn-success" type="submit">Search</button>
+            </form>
+         </div>
+      </div>
+   </div>
+{% endblock %}

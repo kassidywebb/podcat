@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Get Devices</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Including Stylesheet--------------------------------------------->
+	<link rel="stylesheet" type="text/css" href="../static/LoginPageStylesheet.css">
+	<!--Including Bootstrap---------------------------------------------------------------------------->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<!--End of Bootstrap------------------------------------------------------------------------------->
+</head>
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<!--Logo-->
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="../static/cat.png" alt="IMG">
+				</div>
+
+				<!--Form for finding device-->
+				<form class="login100-form validate-form" action="/deviceresult" method="post">
+					<span class="login100-form-title" style="font-size:22px;">
+						What device are you using?
+					</span>
+
+					<!--List of devices user has-->
+               {% for dev in devices %}
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" name="dev_id" value="{{ dev.device_id }}">
+							{{ dev.device_id }}
+						</button>
+					</div>
+               {% endfor %}
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
